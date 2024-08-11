@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+:root {
+    --bg-color: #212121;
+    --second-bg-color: #2e2e2e;
+    --main-color: #d59f0c;
+    --sidebar-text-color: #818181;
+    --white-color: white;
+    --black-color: #000;
+}
+
+html {
+    font-size: 62.5%;
+    /* overflow-x: hidden; */
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--second-bg-color);
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--white-color); */
+    background: rgb(253, 217, 126);
+    z-index: 9999999;
+    /* transition: opacity 90s, visibility .55s; */
+}
+
+.loader-hidden {
+    animation: vanish 1s forwards;
+}
+
+.cursor-1 {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+}
+
+.cursor-2 {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--main-color);
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+}
+
+.container-main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.bubbles {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.bubbles span {
+    position: relative;
+    width: 3vw;
+    height: 3vh;
+    background: var(--main-color);
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #d59f0c44,
+        0 0 50px var(--main-color),
+        0 0 100px var(--main-color);
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+
+.bubbles span:nth-child(even) {
+    background: var(--sidebar-text-color);
+    box-shadow: 0 0 0 10px #81818144,
+        0 0 50px var(--sidebar-text-color),
+        0 0 100px var(--sidebar-text-color);
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background: var(--bg-color);
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: var(--white-color);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.reset {
+    padding: 15px 20px;
+    color: var(--bg-color);
+    background: var(--main-color);
+    border: 4px solid var(--main-color);
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reset:focus {
+    color: var(--white-color);
+    background: var(--bg-color);
+    border: 1px solid var(--main-color);
+}
+
+.game {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background: var(--white-color);
+    transition: .25s;
+    transform: rotateY(180deg);
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: 0;
+    top: 0;
+    background: var(--second-bg-color);
+    transition: .25s;
+    /* opacity: 50%; */
+    transform: rotateY(0deg);
+    border: 2px solid var(--sidebar-text-color);
+    backface-visibility: hidden;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.item:hover::after {
+    background: var(--bg-color);
+    border: 2px solid var(--main-color);
+}
+
+.boxMatch::after,
+.boxOpen::after {
+    transform: rotateY(180deg);
+}
+
+@keyframes vanish {
+    100% {
+        opacity: 1;
+        visibility: hidden;
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}

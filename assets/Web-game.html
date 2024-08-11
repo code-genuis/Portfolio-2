@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="personal-main-web-game.css">
+    <!-- title image -->
+    <link rel="icon" href="../images/personal/logo.svg" type="image/x-icon">
+    <title>Game</title>
+</head>
+
+<body>
+
+    <div class="loader">
+        <!-- <img src="../images/warm-flying-spheres.gif" alt="loader"> -->
+        <!-- <img src="../images/orange-thick-whell.gif" alt=""> -->
+        <!-- <img src="../images/yellow-r.gif" alt=""> -->
+        <!-- <img src="../images/two-iridescent-drops.gif" alt=""> -->
+        <img src="../images/sphere-cutting.gif" alt="">
+        <!-- <img src="../images/shape-moving.gif" alt=""> -->
+        <!-- <img src="../images/rotating-ball-loading.gif" alt=""> -->
+        <!-- <img src="../images/red-sign-intro.gif" alt=""> -->
+        <!-- <img src="../images/hexagonal-fractal.gif" alt=""> -->
+        <!-- <img src="../images/green-sphere-cutting.gif" alt=""> -->
+        <!-- <img src="../images/double-whell-with-shadow.gif" alt=""> -->
+        <!-- <img src="../images/color-splash-wheel.gif" alt=""> -->
+    </div>
+
+    <!-- cursor -->
+    <div class="cursor-1"></div>
+    <div class="cursor-2"></div>
+
+    <div class="container-main">
+        <div class="bubbles">
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Game</h2>
+        <div class="game"></div>
+        <button class="reset" onclick="window.location.reload();">Reset Game</button>
+    </div>
+
+
+    <script>
+        const emojis = ["😎", "😎", "😋", "😋", "😛", "😛", "🤑", "🤑", "🤡", "🤡", "❤", "❤", "🧡", "🧡", "⭐", "⭐"];
+        var shuf_emojis = emojis.sort(() => (Math.random() > .5) ? 2 : -1);
+        for (var i = 0; i < emojis.length; i++) {
+            let box = document.createElement('div')
+            box.className = 'item';
+            box.innerHTML = shuf_emojis[i]
+
+            box.onclick = function () {
+                this.classList.add('boxOpen')
+                setTimeout(function () {
+                    if (document.querySelectorAll('.boxOpen').length > 1) {
+                        if (document.querySelectorAll('.boxOpen')[0].innerHTML == document.querySelectorAll('.boxOpen')[1].innerHTML) {
+                            document.querySelectorAll('.boxOpen')[0].classList.add('boxMatch')
+                            document.querySelectorAll('.boxOpen')[1].classList.add('boxMatch')
+
+                            document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen')
+                            document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen')
+
+                            if (document.querySelectorAll('.boxMatch').length == emojis.length) {
+                                alert('You Win 😎')
+                            }
+                        }
+                        else {
+                            document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen')
+                            document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen')
+                        }
+                    }
+                }, 200)
+            }
+
+            document.querySelector('.game').appendChild(box);
+        }
+
+
+
+        var cursor1 = document.querySelector(".cursor-1");
+        var cursor2 = document.querySelector(".cursor-2");
+        document.addEventListener("mousemove", function (e) {
+            cursor1.style.cssText = cursor2.style.cssText = "left: " + e.clientX
+                + "px; top: " + e.clientY + "px;";
+        })
+
+
+        // loading
+        var loader = document.querySelector('.loader');
+        window.addEventListener("load", vanish);
+
+        function vanish() {
+            loader.classList.add("loader-hidden");
+        }
+    </script>
+</body>
+
+</html>
