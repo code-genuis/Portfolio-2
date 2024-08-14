@@ -1,7 +1,7 @@
 // disabled right click
-// document.addEventListener("contextmenu", function(e){
-//     e.preventDefault()
-// },false)
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault()
+},false)
 
 
 
@@ -32,26 +32,6 @@ function loading() {
     }
 }
 loading()
-
-// window.addEventListener("load", () =>{
-//     const loader = document.querySelector('.loader');
-
-//     loader.classList.add('loader-hidden');
-
-//     loader.addEventListener("transitionend", () => {
-//         document.body.removeChild('loader');
-//     })
-// })
-
-
-// function headingAnimation(){
-    // document.getElementById("heading-animation");
-    // let element = document.querySelectorAll("#heading-animation");
-    // element.toUpperCase();
-// };
-// headingAnimation();
-
-
 
 
 
@@ -156,10 +136,6 @@ function slider() {
         loop: true,
         spaceBetween: 50,
         grabCursor: true,
-        // autoplay: {
-        //     delay: 3000,
-        //     disableOnInteraction: false,
-        // },
         slidesPerView: 10,
         freeMode: true,
         pagination: {
@@ -168,7 +144,6 @@ function slider() {
             dynamicBullets: true,
         },
         keyboard: true,
-        // mousewheel: true,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -303,20 +278,25 @@ autoNumber()
 // nav tabs
 function navTabs() {
     const tabs = document.querySelectorAll(".nav-bar");
-    const all_contents = document.querySelectorAll("#main-section-1");
+    const allContents = document.querySelectorAll("#main-section-1");
 
     tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', (event) => {
+            event.preventDefault(); 
+
             tabs.forEach(tab => { tab.classList.remove('active2') })
             tab.classList.add('active2');
 
-            all_contents.forEach(content => { content.classList.remove('active2') });
+            allContents.forEach(content => { content.classList.remove('active2'); });
+            allContents[index].classList.add('active2');
+            allContents[index].scrollIntoView({ behavior: 'smooth' }); 
 
-            all_contents[index].classList.add('active2');
+ 
         })
     })
 }
 navTabs()
+
 
 
 
@@ -462,47 +442,6 @@ portfolioImg()
 
 
 // contact
-// function sendMail(){
-//     let parms = {
-//         name: document.getElementById('name').value,
-//         email: document.getElementById('email').value,
-//         number: document.getElementById('number').value,
-//         subject: document.getElementById('subject').value,
-//         message: document.getElementById('message').value
-//     }
-//     emailjs.send("service_mma8zhc","template_ziwgz79",parms).then(alert("Email sent!!"))
-// }
-// const form = document.querySelector("form");
-// const fullName = document.querySelector("#name");
-// const email = document.querySelector("#email");
-// const number = document.querySelector("#number");
-// const subject = document.querySelector("#subject");
-// const message = document.querySelector("#message");
-
-// function sendEmail() {
-//     const bodyMessage = `Name: ${fullName.value} <br> Email: ${email.value} <br> Number: ${number.value} <br> Subject: ${subject.value} <br> Message: ${message.value}`;
-
-//     Email.send({
-//         Host: "smtp.elasticemail.com",
-//         Username: "abdullahabbad916@gmail.com",
-//         Password: "2B5BC94583546097538A4C8C06609A071915",
-//         To: 'abdullahabbad916@gmail.com',
-//         From: "abdullahabbad916@gmail.com",
-//         Subject: subject.value,
-//         // Body: bodyMessage
-//     }).then(
-//         message => { alert("OK");
-// if (message == "OK") {
-//     Swal.fire({
-//         title: "Success",
-//         text: "Message sent successfully!",
-//         icon: "success"
-//     });
-// }
-//         }
-//     );
-// }
-// Function to send email using EmailJS
 function sendMail() {
     let parms = {
         name: document.getElementById('name').value,
@@ -535,9 +474,9 @@ function sendEmail() {
 
     Email.send({
         Host: "smtp.elasticemail.com",
-        Username: "abdullahabbad916@gmail.com",
+        Username: "abdullahabbad59@gmail.com",
         Password: "2B5BC94583546097538A4C8C06609A071915",
-        To: 'abdullahabbad916@gmail.com',
+        To: 'abdullahabbad59@gmail.com',
         From: "abdullahabbad59@gmail.com",
         Subject: emailSubject,
         Body: bodyMessage
