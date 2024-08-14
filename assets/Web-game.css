@@ -233,3 +233,26 @@ h2 {
         transform: translateY(-10vh) scale(1);
     }
 }
+
+@media (max-width: 1440px){
+    .bubbles span {
+        animation-duration: calc(125s / var(--i));
+    }
+
+}
+
+@media (max-width: 768px){
+    .container {
+        padding: 20px 10px;
+    }
+    .game {
+        width: 280px;
+        height: 280px;
+        justify-content: center;
+    }
+    .item {
+        width: 60px;
+        height: 60px;
+        font-size: 2em;
+    }
+}
