@@ -1918,7 +1918,7 @@ svg circle:nth-child(2) {
   position: relative;
   z-index: 2;
   width: 26vw;
-  /* border-radius: 32% 68% 31% 69% / 63% 58% 42% 37%; */
+  border-radius: 32% 68% 31% 69% / 63% 58% 42% 37%;
   border: 8px solid var(--second-bg-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.237), 0 0 20px rgba(0, 0, 0, 0.671);
 }
