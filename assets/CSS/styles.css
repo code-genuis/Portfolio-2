@@ -3209,16 +3209,15 @@ svg circle:nth-child(2) {
 /* nav bar */
 @keyframes moving {
   from {
-    transform: translateX(50px);
+    transform: scale(.99);
     opacity: 0;
   }
 
   to {
-    transform: translateX(0);
+    transform: scale(1);
     opacity: 1;
   }
 }
-
 /* loading */
 @keyframes vanish {
   100% {
@@ -3226,16 +3225,6 @@ svg circle:nth-child(2) {
     visibility: hidden;
   }
 }
-
-/* @keyframes loading {
-    from {
-        transform: rotate(0turn);
-    }
-
-    to {
-        transform: rotate(1turn);
-    }
-} */
 
 /* profile dot */
 @keyframes heartbeat {
