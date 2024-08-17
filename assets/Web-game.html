@@ -14,18 +14,7 @@
 <body>
 
     <div class="loader">
-        <!-- <img src="../images/warm-flying-spheres.gif" alt="loader"> -->
-        <!-- <img src="../images/orange-thick-whell.gif" alt=""> -->
-        <!-- <img src="../images/yellow-r.gif" alt=""> -->
-        <!-- <img src="../images/two-iridescent-drops.gif" alt=""> -->
         <img src="../images/sphere-cutting.gif" alt="">
-        <!-- <img src="../images/shape-moving.gif" alt=""> -->
-        <!-- <img src="../images/rotating-ball-loading.gif" alt=""> -->
-        <!-- <img src="../images/red-sign-intro.gif" alt=""> -->
-        <!-- <img src="../images/hexagonal-fractal.gif" alt=""> -->
-        <!-- <img src="../images/green-sphere-cutting.gif" alt=""> -->
-        <!-- <img src="../images/double-whell-with-shadow.gif" alt=""> -->
-        <!-- <img src="../images/color-splash-wheel.gif" alt=""> -->
     </div>
 
     <!-- cursor -->
@@ -91,6 +80,16 @@
 
 
     <script>
+        // disabled right click
+        document.addEventListener(
+        "contextmenu",
+        function (e) {
+             e.preventDefault();
+          },
+        false
+       );
+
+        
         const emojis = ["😎", "😎", "😋", "😋", "😛", "😛", "🤑", "🤑", "🤡", "🤡", "❤", "❤", "🧡", "🧡", "⭐", "⭐"];
         var shuf_emojis = emojis.sort(() => (Math.random() > .5) ? 2 : -1);
         for (var i = 0; i < emojis.length; i++) {
