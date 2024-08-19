@@ -242,6 +242,10 @@ h2 {
 }
 
 @media (max-width: 768px){
+    .cursor-1,
+    .cursor-2{
+        display: none;
+    }
     .container {
         padding: 20px 10px;
     }
