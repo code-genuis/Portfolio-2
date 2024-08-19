@@ -973,13 +973,18 @@ svg circle {
 }
 
 .circle-svg-1 {
-  stroke-dasharray: 400;
+  stroke-dasharray: 381.5;
+  stroke-dashoffset: 400;
+}
+
+.circle-svg-2 {
+  stroke-dasharray: 381.5;
   stroke-dashoffset: 400;
 }
 
 .circle-svg-3 {
-  stroke-dasharray: 410;
-  stroke-dashoffset: 410;
+  stroke-dasharray: 381.5;
+  stroke-dashoffset: 400;
 }
 
 svg circle:nth-child(1) {
@@ -989,6 +994,20 @@ svg circle:nth-child(1) {
 }
 
 svg circle:nth-child(2) {
+  stroke: var(--main-color);
+}
+
+.circle-svg-1 {
+  stroke-dashoffset: calc(400 - (400 * 44) / 100);
+  stroke: var(--main-color);
+}
+
+.circle-svg-2 {
+  stroke-dashoffset: calc(400 - (400 * 100) / 100);
+  stroke: var(--main-color);
+}
+
+.circle-svg-3 {
   stroke-dashoffset: calc(400 - (400 * 40) / 100);
   stroke: var(--main-color);
 }
@@ -1687,7 +1706,6 @@ svg circle:nth-child(2) {
   padding: 50px;
   padding-left: 319px;
   padding-right: 162px;
-  /* width: 100%; */
   background-color: var(--second-bg-color);
 }
 
@@ -1918,7 +1936,7 @@ svg circle:nth-child(2) {
   position: relative;
   z-index: 2;
   width: 26vw;
-/*   border-radius: 32% 68% 31% 69% / 63% 58% 42% 37%; */
+  /* border-radius: 32% 68% 31% 69% / 63% 58% 42% 37%; */
   border: 8px solid var(--second-bg-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.237), 0 0 20px rgba(0, 0, 0, 0.671);
 }
@@ -3218,6 +3236,7 @@ svg circle:nth-child(2) {
     opacity: 1;
   }
 }
+
 /* loading */
 @keyframes vanish {
   100% {
